@@ -7,17 +7,25 @@
 //
 
 import UIKit
-
+import GoogleMaps
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        Network.fetchAllTrees { (json, error) in
-            guard error == nil else { return }
-            if let json = json {
-                print(json)
-            }
-        }
+        let camera = GMSCameraPosition.camera(withLatitude: -33.868, longitude: 151.2086, zoom: 14)
+        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+        let marker = GMSMarker()
+        marker.position = camera.target
+        marker.snippet = "Hello World"
+        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.map = mapView
+        view = mapView
+//        Network.fetchAllTrees { (json, error) in
+//            guard error == nil else { return }
+//            if let json = json {
+//                print(json)
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
