@@ -12,21 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let url = URL(string: "https://data.cityofnewyork.us/resource/nwxe-4ae8.json") {
-            let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                guard error == nil else {
-                    print("Error has occurred \(error.debugDescription)")
-                    return
-                }
-                guard let data = data else {
-                    print("Data is empty")
-                    return
-                }
-                
-                let json = try! JSONSerialization.jsonObject(with: data, options: [])
+        Network.fetchAllTrees { (json, error) in
+            guard error == nil else { return }
+            if let json = json {
                 print(json)
-            })
-            task.resume()
+            }
         }
     }
 
