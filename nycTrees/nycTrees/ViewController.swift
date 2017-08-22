@@ -12,7 +12,22 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        if let url = URL(string: "https://data.cityofnewyork.us/resource/nwxe-4ae8.json") {
+            let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                guard error == nil else {
+                    print("Error has occurred \(error.debugDescription)")
+                    return
+                }
+                guard let data = data else {
+                    print("Data is empty")
+                    return
+                }
+                
+                let json = try! JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+            })
+            task.resume()
+        }
     }
 
     override func didReceiveMemoryWarning() {
