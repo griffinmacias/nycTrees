@@ -1,0 +1,6 @@
+framework module Pods_nycTreesTests {
+  umbrella header "Pods-nycTreesTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
