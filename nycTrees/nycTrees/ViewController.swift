@@ -20,12 +20,12 @@ class ViewController: UIViewController {
         marker.appearAnimation = kGMSMarkerAnimationPop
         marker.map = mapView
         view = mapView
-//        Network.fetchAllTrees { (json, error) in
-//            guard error == nil else { return }
-//            if let json = json {
-//                print(json)
-//            }
-//        }
+        Network.fetchAllTrees { (json, error) in
+            guard error == nil else { return }
+            if let json = json {
+                print(json)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

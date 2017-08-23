@@ -19,6 +19,7 @@
 		DB7848B51F4CE74D0000CC2C /* nycTreesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7848B41F4CE74D0000CC2C /* nycTreesUITests.swift */; };
 		DB7848C31F4CEA280000CC2C /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7848C21F4CEA280000CC2C /* Networking.swift */; };
 		DB7F36851F4CF47000DE7011 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7F36841F4CF47000DE7011 /* Constants.swift */; };
+		DBA2DF9E1F4E0DCC0090FCBE /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2DF9D1F4E0DCC0090FCBE /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		DB7848B61F4CE74D0000CC2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB7848C21F4CEA280000CC2C /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		DB7F36841F4CF47000DE7011 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DBA2DF9D1F4E0DCC0090FCBE /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		DE6C65CE12695AA76B75021A /* Pods_nycTrees.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nycTrees.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 				DB7848961F4CE74C0000CC2C /* ViewController.swift */,
 				DB7F36841F4CF47000DE7011 /* Constants.swift */,
 				DB7848C21F4CEA280000CC2C /* Networking.swift */,
+				DBA2DF9D1F4E0DCC0090FCBE /* Models.swift */,
 				DB7848981F4CE74C0000CC2C /* Main.storyboard */,
 				DB78489B1F4CE74C0000CC2C /* Assets.xcassets */,
 				DB78489D1F4CE74C0000CC2C /* LaunchScreen.storyboard */,
@@ -471,6 +474,7 @@
 				DB7848971F4CE74C0000CC2C /* ViewController.swift in Sources */,
 				DB7848951F4CE74C0000CC2C /* AppDelegate.swift in Sources */,
 				DB7F36851F4CF47000DE7011 /* Constants.swift in Sources */,
+				DBA2DF9E1F4E0DCC0090FCBE /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
