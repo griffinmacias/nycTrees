@@ -13,15 +13,18 @@ class ViewController: UIViewController {
     var mapView: GMSMapView?
     override func viewDidLoad() {
         super.viewDidLoad()
+        createCamera()
+        createMapView()
+        getAllTrees()
+    }
+    
+    func getAllTrees() {
         Network.fetchAllTrees { (trees, error) in
             guard error == nil else { return }
             if let trees = trees as? [Tree] {
                 DispatchQueue.main.async {
-                    self.createCamera()
-                    self.createMapView()
                     self.createMapMarkers(trees: trees)
                 }
-                print(trees)
             }
         }
     }
