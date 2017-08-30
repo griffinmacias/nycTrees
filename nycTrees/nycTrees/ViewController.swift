@@ -9,21 +9,42 @@
 import UIKit
 import GoogleMaps
 class ViewController: UIViewController {
-
+    var camera: GMSCameraPosition?
+    var mapView: GMSMapView?
     override func viewDidLoad() {
         super.viewDidLoad()
-        let camera = GMSCameraPosition.camera(withLatitude: -33.868, longitude: 151.2086, zoom: 14)
-        let mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-        let marker = GMSMarker()
-        marker.position = camera.target
-        marker.snippet = "Hello World"
-        marker.appearAnimation = kGMSMarkerAnimationPop
-        marker.map = mapView
-        view = mapView
-        Network.fetchAllTrees { (json, error) in
+        Network.fetchAllTrees { (trees, error) in
             guard error == nil else { return }
-            if let json = json {
-                print(json)
+            if let trees = trees as? [Tree] {
+                DispatchQueue.main.async {
+                    self.createCamera()
+                    self.createMapView()
+                    self.createMapMarkers(trees: trees)
+                }
+                print(trees)
+            }
+        }
+    }
+    
+    func createCamera() {
+        camera = GMSCameraPosition.camera(withLatitude: 40.706099, longitude: -73.938396, zoom: 10)
+    }
+    
+    func createMapView() {
+        if let camera = self.camera {
+            mapView = GMSMapView.map(withFrame: .zero, camera: camera)
+            view = mapView
+        }
+    }
+    
+    func createMapMarkers(trees: [Tree]) {
+        if let mapView = self.mapView {
+            for tree in trees {
+                let marker = GMSMarker()
+                marker.position = CLLocationCoordinate2DMake(tree.latitude, tree.longitude)
+                marker.snippet = tree.name
+                marker.appearAnimation = kGMSMarkerAnimationPop
+                marker.map = mapView
             }
         }
     }

@@ -28,8 +28,16 @@ final class Network {
                     return
                 }
                 
-                let json = try! JSONSerialization.jsonObject(with: data, options: [])
-                completion(json, error)
+                if let jsonArray = try! JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]] {
+                    var trees: [Tree] = []
+                    for json in jsonArray {
+                        if let tree = Tree(json: json) {
+                            trees.append(tree)
+                        }
+                    }
+                    completion(trees, error)
+                }
+                
             })
             task.resume()
         }

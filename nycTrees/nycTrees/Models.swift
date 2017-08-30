@@ -10,10 +10,21 @@ import Foundation
 
 struct Tree {
     let name: String
-    let longitude: Int
-    let latitude: Int
+    let longitude: Double
+    let latitude: Double
     
     init?(json: Any) {
-        if json as? Dictionary
+        
+        guard let json = json as? [String: Any],
+                let commonName = json["spc_common"] as? String,
+                let latitudeString = json["latitude"] as? String,
+                let longitudeString = json["longitude"] as? String,
+                let latitude = Double(latitudeString),
+                let longitude = Double(longitudeString) else { return nil }
+        
+        self.name = commonName
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }
+
